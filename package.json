@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "start-kafka-api": "node apps/kafka-api/server.js",
     "start-api": "nx serve --project=api",
     "start-ui": "nx serve --project=crypto",
     "build": "nx run-many --target=build --projects=crypto,api --parallel",

@@ -1,0 +1,17 @@
+{
+  "name": "kafka-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "kafka-node": "^4.1.3",
+    "mysql": "^2.17.1"
+  }
+}

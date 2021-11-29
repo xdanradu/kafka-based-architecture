@@ -1,8 +1,8 @@
 # kafka-based-architecture mono-repo with nx
 
-## Prerequisites (on Docker):
+## Prerequisites
 
-1. Kafka + zookeeper (localhost:2181)
+### Kafka + zookeeper (localhost:2181)
     
 Use config-scripts docker-compose.yml file to start a docker container that connect kafka to zookeeper:
      
@@ -11,7 +11,7 @@ Use config-scripts docker-compose.yml file to start a docker container that conn
 - MySLQ: localhosT:3036
 - PhpMyAdmin: localhost:8081 
 
-2. MySQL 
+### MySQL 
     Source: https://medium.com/@migueldoctor/run-mysql-phpmyadmin-locally-in-3-steps-using-docker-74eb735fa1fc
     
     Commands: 
@@ -37,7 +37,7 @@ Use config-scripts docker-compose.yml file to start a docker container that conn
    You have to manually create a new database with PHPMyAdmin called '???' with a 'users' table 
    (see auth microservice database controller and .env file).
    
-3. PHPMyAdmin
+### PHPMyAdmin
 
     ```bash
     docker pull phpmyadmin/phpmyadmin:latest
