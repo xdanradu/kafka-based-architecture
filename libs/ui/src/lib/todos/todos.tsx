@@ -7,8 +7,8 @@ export interface TodosProps {}
 export const Todos = (props: { todos: Todo[] }) => {
   return (
     <ul>
-      {props.todos.map((t) => (
-        <li className={'todo'}>{t.title}</li>
+      {props.todos.map((t, i) => (
+        <li key={i} className={'todo'}>{t.title}</li>
       ))}
     </ul>
   );
