@@ -1,0 +1,70 @@
+{
+  "root": "apps/crypto",
+  "sourceRoot": "apps/crypto/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/crypto",
+        "index": "apps/crypto/src/index.html",
+        "baseHref": "/",
+        "main": "apps/crypto/src/main.tsx",
+        "polyfills": "apps/crypto/src/polyfills.ts",
+        "tsConfig": "apps/crypto/tsconfig.app.json",
+        "assets": ["apps/crypto/src/favicon.ico", "apps/crypto/src/assets"],
+        "styles": ["apps/crypto/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/crypto/src/environments/environment.ts",
+              "with": "apps/crypto/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "crypto:build",
+        "hmr": true,
+        "proxyConfig": "apps/crypto/proxy.conf.json"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "crypto:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/crypto/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/crypto"],
+      "options": {
+        "jestConfig": "apps/crypto/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
