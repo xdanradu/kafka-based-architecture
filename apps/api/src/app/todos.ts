@@ -1,6 +1,6 @@
 import { Express } from 'express';
 import { Todo } from '@advanced-monorepo/api-interfaces';
-import make_request from './kafka/client';
+import * as shared from '@advanced-monorepo/shared';
 
 const todos: Todo[] = [{ title: 'Todo 1' }, { title: 'Todo 2' }];
 
@@ -8,7 +8,7 @@ export function addTodoRoutes(app: Express) {
 
   app.get('/api/todos', (req, resp)  => {
 
-    make_request('get_todos', { data: '123' }, function(err,results) {
+    shared.executeKafkaRequest('get_todos', { data: '123' }, function(err, results) {
       if (err) {
         console.log("Inside err");
       }

@@ -1,4 +1,3 @@
-import crypto from 'crypto';
 import { KafkaClient, Consumer, HighLevelProducer } from 'kafka-node';
 
 function KafkaRPC(){
@@ -90,7 +89,7 @@ KafkaRPC.prototype.setupResponseQueue = function(producer,topic_name, next){
 
 
 //make request to kafka
-function make_request(queue_name, msg_payload, callback){
+function executeKafkaRequest(queue_name, msg_payload, callback) {
     console.log('Backend Client : Inside make request');
     console.log('Message to be sent : ' +msg_payload);
   new KafkaRPC().makeRequest(queue_name, msg_payload, function(err, response){
@@ -133,6 +132,4 @@ function ConnectionProvider() {
 let TIMEOUT=8000; //time to wait for response in ms
 let self;
 
-
-
-export default make_request;
+export { executeKafkaRequest };

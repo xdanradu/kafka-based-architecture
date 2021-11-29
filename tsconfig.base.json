@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@advanced-monorepo/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@advanced-monorepo/shared": ["libs/shared/src/index.ts"],
       "@advanced-monorepo/ui": ["libs/ui/src/index.ts"]
     }
   },

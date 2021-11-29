@@ -12,6 +12,7 @@ const App = () => {
   }, []);
 
   function addTodo() {
+
     fetch('/api/addTodo', {
       method: 'POST',
       body: '',
