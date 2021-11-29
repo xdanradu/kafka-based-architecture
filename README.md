@@ -1,10 +1,60 @@
+# kafka-based-architecture mono-repo with nx
+
+## Prerequisites (on Docker):
+
+1. Kafka + zookeeper (localhost:2181)
+    
+Use config-scripts docker-compose.yml file to start a docker container that connect kafka to zookeeper:
+     
+     `bash docker-compose -f docker-compose.yml up`
+                                      
+- MySLQ: localhosT:3036
+- PhpMyAdmin: localhost:8081 
+
+2. MySQL 
+    Source: https://medium.com/@migueldoctor/run-mysql-phpmyadmin-locally-in-3-steps-using-docker-74eb735fa1fc
+    
+    Commands: 
+    
+    ```bash
+    docker pull mysql:latest
+    docker run --name dev-db -e MYSQL_ROOT_PASSWORD=root -d -p 3306:3306 mysql:latest
+    ```
+   
+   If the container has already been created you can start it from docker containers or from command line:
+   
+   ```bash
+   docker container ls
+   docker container start <container_id>
+   ```
+   
+   MySQL server will be accessible from any docker image that runs on localhost: 
+   DB_HOST=db
+   DB_USER=root
+   DB_PASSWORD=root
+   DB_NAME=app-db
+   
+   You have to manually create a new database with PHPMyAdmin called '???' with a 'users' table 
+   (see auth microservice database controller and .env file).
+   
+3. PHPMyAdmin
+
+    ```bash
+    docker pull phpmyadmin/phpmyadmin:latest
+    docker run --name dev-phpmyadmin -d --link dev-db:db -p 8081:80 phpmyadmin/phpmyadmin
+    ```
+   
+PHPMyAdmin access: http://localhost:8081
+
+
+
+
+
 
 
 # AdvancedMonorepo
 
 This project was generated using [Nx](https://nx.dev).
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 
 🔎 **Smart, Extensible Build Framework**
 
@@ -85,10 +135,8 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
 
 ### Distributed Computation Caching & Distributed Task Execution
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
 Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
 
 Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
 
-Visit [Nx Cloud](https://nx.app/) to learn more.
+
